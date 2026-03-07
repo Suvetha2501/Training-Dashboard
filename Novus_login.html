@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVUS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* Hexaware Logo - Top Right */
+.hexaware-logo{
+  position: fixed;
+  top: 25px;
+  right: 100px;
+  width: 100px;      /* Small size */
+  height: auto;
+  z-index: 5;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:radial-gradient(circle at 30% 30%,#081020,#02040a 70%);
+overflow:hidden;
+color:white;
+}
+
+/* ⭐ Galaxy stars */
+body::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:
+radial-gradient(1px 1px at 20px 30px, white, transparent),
+radial-gradient(1px 1px at 60px 90px, white, transparent),
+radial-gradient(1px 1px at 140px 150px, white, transparent),
+radial-gradient(1px 1px at 250px 200px, white, transparent),
+radial-gradient(1px 1px at 350px 300px, white, transparent),
+radial-gradient(1px 1px at 450px 120px, white, transparent),
+radial-gradient(1px 1px at 550px 260px, white, transparent),
+radial-gradient(1px 1px at 650px 180px, white, transparent),
+radial-gradient(1px 1px at 750px 350px, white, transparent);
+background-repeat:repeat;
+background-size:1000px 1000px;
+opacity:0.7;
+animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+0%{opacity:0.5;}
+100%{opacity:1;}
+}
+
+/* 🌠 MULTIPLE SHOOTING STARS */
+.shooting-star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+box-shadow:0 0 6px white,0 0 12px #00c6ff,0 0 20px #00c6ff;
+opacity:0;
+animation:shoot linear infinite;
+}
+
+.shooting-star:nth-of-type(1){ animation-duration:6s; animation-delay:0s; }
+.shooting-star:nth-of-type(2){ animation-duration:7s; animation-delay:2s; }
+.shooting-star:nth-of-type(3){ animation-duration:5s; animation-delay:4s; }
+.shooting-star:nth-of-type(4){ animation-duration:8s; animation-delay:1s; }
+.shooting-star:nth-of-type(5){ animation-duration:6.5s; animation-delay:3s; }
+
+@keyframes shoot{
+0%{ top:10%; left:-50px; opacity:1; }
+100%{ top:60%; left:120%; opacity:0; }
+}
+
+/* Card */
+.card{
+width:420px;
+padding:45px 35px;
+border-radius:25px;
+background:#11162a;
+box-shadow:0 0 60px rgba(0,0,0,0.8),0 0 80px rgba(0,198,255,0.2);
+z-index:2;
+text-align:center;
+}
+
+.novus{
+font-size:40px;
+font-weight:800;
+letter-spacing:4px;
+background:linear-gradient(90deg,#ff00cc,#00c6ff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-bottom:5px;
+}
+
+.subtitle{font-size:14px;opacity:0.7;margin-bottom:25px;}
+
+label{font-size:13px;display:block;text-align:left;margin-top:10px;margin-bottom:5px;}
+
+input, select{
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:none;
+border-radius:12px;
+background:#1c223d;
+color:white;
+font-size:14px;
+outline:none;
+}
+
+select option{
+background:white;
+color:black;
+font-weight:600;
+}
+
+button{
+width:100%;
+padding:13px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#00c6ff,#0072ff);
+color:white;
+font-weight:600;
+cursor:pointer;
+transition:0.3s;
+margin-top:5px;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px #00c6ff;
+}
+
+.links{margin-top:15px;font-size:13px;}
+.links span{display:block;margin-top:6px;cursor:pointer;opacity:0.8;}
+.links span:hover{text-decoration:underline;}
+
+.hidden{display:none;}
+</style>
+</head>
+
+<body>
+<img src="Hexaware.png" class="hexaware-logo" alt="Hexaware Logo">
+<!-- 🌠 Shooting stars -->
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+<div class="shooting-star"></div>
+  <!-- HEXAWARE LOGO -->
+
+
+<div class="card">
+
+<!-- LOGIN -->
+<div id="loginForm">
+<div class="novus">NOVUS</div>
+<div class="subtitle">Maverick Onboarding System 🚀</div>
+
+<label>Login As</label>
+<select id="loginRole">
+<option value="fresher">Fresher</option>
+<option value="admin">Admin</option>
+</select>
+
+<label>Email</label>
+<input type="email" id="loginEmail">
+
+<label>Password</label>
+<input type="password" id="loginPassword">
+
+<button onclick="login()">Sign In</button>
+
+<div class="links">
+<span onclick="showCreate()">Create Account</span>
+<span onclick="showForgot()">Forgot Password?</span>
+</div>
+</div>
+
+<!-- SIGNUP -->
+<div id="createForm" class="hidden">
+<div class="novus">NOVUS</div>
+<div class="subtitle">Create Account 🚀</div>
+
+<label>Full Name</label>
+<input type="text" id="fullName">
+
+<label>Email</label>
+<input type="email" id="signupEmail">
+
+<label>Password</label>
+<input type="password" id="signupPassword">
+
+<label>Confirm Password</label>
+<input type="password" id="confirmPassword">
+
+<label>Role</label>
+<select id="signupRole">
+<option value="fresher">Fresher</option>
+<option value="admin">Admin</option>
+</select>
+
+<button onclick="signup()">Create Account</button>
+
+<div class="links">
+<span onclick="showLogin()">Back to Login</span>
+</div>
+</div>
+
+<!-- RESET -->
+<div id="forgotForm" class="hidden">
+<div class="novus">NOVUS</div>
+<div class="subtitle">Reset Password</div>
+
+<label>Email</label>
+<input type="email" id="resetEmail">
+
+<button onclick="resetPassword()">Send Reset Link</button>
+
+<div class="links">
+<span onclick="showLogin()">Back to Login</span>
+</div>
+</div>
+
+</div>
+
+<script>
+function showCreate(){
+loginForm.classList.add("hidden");
+createForm.classList.remove("hidden");
+forgotForm.classList.add("hidden");
+}
+function showForgot(){
+loginForm.classList.add("hidden");
+createForm.classList.add("hidden");
+forgotForm.classList.remove("hidden");
+}
+function showLogin(){
+loginForm.classList.remove("hidden");
+createForm.classList.add("hidden");
+forgotForm.classList.add("hidden");
+}
+</script>
+
+<!-- 🔥 FIREBASE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, doc, setDoc, getDoc } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDPe0Zp69bnM9251w0FfnH1UPhGedGh4qo",
+  authDomain: "novus-9dfb8.firebaseapp.com",
+  projectId: "novus-9dfb8",
+  storageBucket: "novus-9dfb8.appspot.com",
+  messagingSenderId: "641276518161",
+  appId: "1:641276518161:web:ee2c11e2662e86e59bb6b0"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+window.signup = async function(){
+if(signupPassword.value !== confirmPassword.value){
+alert("Passwords do not match!");
+return;
+}
+try{
+const userCredential = await createUserWithEmailAndPassword(auth, signupEmail.value, signupPassword.value);
+await setDoc(doc(db,"users",userCredential.user.uid),{
+name:fullName.value,
+role:signupRole.value
+});
+alert("Account Created!");
+showLogin();
+}catch(error){alert(error.message);}
+}
+
+window.login = async function(){
+try{
+const userCredential = await signInWithEmailAndPassword(auth, loginEmail.value, loginPassword.value);
+const docSnap = await getDoc(doc(db,"users",userCredential.user.uid));
+if(!docSnap.exists()){alert("User not found!");return;}
+if(docSnap.data().role !== loginRole.value){alert("Wrong role selected!");return;}
+if(loginRole.value==="admin"){
+window.location.href="AdminDashboard.html";
+}else{
+window.location.href="FresherDashboard.html";
+}
+}catch(error){alert(error.message);}
+}
+
+window.resetPassword=function(){
+sendPasswordResetEmail(auth, resetEmail.value)
+.then(()=>alert("Reset link sent!"))
+.catch(error=>alert(error.message));
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
